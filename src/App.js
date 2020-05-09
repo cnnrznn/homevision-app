@@ -18,9 +18,10 @@ class HomeList extends React.Component {
     this.state = {
       houses: [],
     }
-    this.pn = 1;      // next page number to download
-    this.ppl = 5;     // number of pages to download concurrently
-    this.nQueued = 0; // number of pages currently queued for download
+    this.nextPage = 1;        // next page number to download
+    this.pagesPerLoad = 10;   // number of pages to download concurrently
+    this.housesPerPage = 1;   // number of houses per page
+    this.nPagesQueued = 0;    // number of pages currently queued for download
 
     this.formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -49,14 +50,14 @@ class HomeList extends React.Component {
     * as the scroll approaches the bottom
     */
   download() {
-    if (this.nQueued > this.ppl) { return }
+    if (this.nPagesQueued > this.pagesPerLoad) { return }
 
     if (document.body.clientHeight - (window.scrollY + window.screen.height) < 1000) {
-      for (var i=0; i < this.ppl; i++) {
-        this.getHouses(this.pn + i, 2)
+      for (var i=0; i < this.pagesPerLoad; i++) {
+        this.getHouses(this.nextPage + i, this.housesPerPage)
       }
-      this.pn += this.ppl
-      this.nQueued += this.ppl;
+      this.nextPage += this.pagesPerLoad
+      this.nPagesQueued += this.pagesPerLoad;
     }
   }
 
@@ -72,7 +73,8 @@ class HomeList extends React.Component {
         this.setState({
           houses: this.state.houses.concat(resp.data.houses),
         })
-        this.nQueued--
+        console.log(this.nPagesQueued)
+        this.nPagesQueued--
       })
       .catch(error => {
         console.log(error)
