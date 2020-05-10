@@ -19,7 +19,7 @@ class HomeList extends React.Component {
       houses: [],
     }
     this.nextPage = 1;        // next page number to download
-    this.pagesPerLoad = 10;   // number of pages to download concurrently
+    this.pagesPerLoad = 20;   // number of pages to download concurrently
     this.housesPerPage = 1;   // number of houses per page
     this.nPagesQueued = 0;    // number of pages currently queued for download
 
@@ -52,7 +52,7 @@ class HomeList extends React.Component {
   download() {
     if (this.nPagesQueued > this.pagesPerLoad) { return }
 
-    if (document.body.clientHeight - (window.scrollY + window.screen.height) < 1000) {
+    if (document.body.clientHeight - (window.scrollY + window.screen.height) < 2000) {
       for (var i=0; i < this.pagesPerLoad; i++) {
         this.getHouses(this.nextPage + i, this.housesPerPage)
       }
