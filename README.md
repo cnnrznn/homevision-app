@@ -30,10 +30,12 @@ See the `HomeList` constructor for relevant constants.
 
 The download algorithm runs once every 500ms. It checks the current scroll position. If the user is close enough to the end, it begins the next load cycle. Critically, it does this _before the end of the page is visible_. 
 
-# Building
-For this project I used react's tools. Below you'll find the remnants from the auto-generated readme file. I though I'd keep it around because it has instructs for building/running the app.
+# Build/Run
+For this project I used react's [create React App](https://github.com/facebook/create-react-app) tool. To set up a dev environment and run a server, execute the following commands.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. `git clone https://github.com/cnnrznn/homevision-app.git`
+2. `cd homevision-app`
+3. `npm i`
+4. `npm start`
 
-1. `npm i`
-2. `npm start`
+The server should run at `localhost:3000`.
