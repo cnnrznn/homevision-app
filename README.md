@@ -7,7 +7,7 @@ author: Connor Zanin
 
 Hi Homevision! Thanks for this coding assessment. I'm a huge fan of the shift from leetcode question to more practical coding puzzles.
 
-
+You can find all the logic for this project in `src/App.js`.
 
 ## Design
 
