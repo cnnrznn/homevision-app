@@ -7,6 +7,8 @@ author: Connor Zanin
 
 Hi Homevision! Thanks for this coding assessment. I'm a huge fan of the shift from leetcode question to more practical coding puzzles.
 
+
+
 ## Design
 
 The main challenge of this project was to create an infinite scroll that handles api failures. To do this, my solution has 2 key features:
@@ -24,7 +26,7 @@ With the same time cost (tcp handshake + http request), there is a higher probab
 I made one key observation: the requirements **DO NOT** specify results must be ordered. Therefore, though my logic solves the problem of loading duplicate pages, it does not solve the problem of ordering those pages. The list grows on a first-come-first-serve basis.
 
 ### Download algorithm
-For more parallelism, I lowered the houses per page to 1 and the number of pages simultaneously to 10.
+See the `HomeList` constructor for relevant constants.
 
 The download algorithm runs once every 500ms. It checks the current scroll position. If the user is close enough to the end, it begins the next load cycle. Critically, it does this _before the end of the page is visible_. 
 
