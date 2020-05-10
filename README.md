@@ -35,6 +35,5 @@ For this project I used react's tools. Below you'll find the remnants from the a
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-1. `cd src/`
-2. `npm i`
-3. `npm start`
+1. `npm i`
+2. `npm start`
